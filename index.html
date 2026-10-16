@@ -22,12 +22,8 @@ html, body {
 }
 
 .bg-glow {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(150px);
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 0;
+    position: fixed; border-radius: 50%; filter: blur(150px);
+    opacity: 0.15; pointer-events: none; z-index: 0;
 }
 .bg-gold { width: 700px; height: 700px; background: #f1c40f; top: -250px; right: -250px; }
 .bg-blue { width: 600px; height: 600px; background: #3498db; bottom: -200px; left: -200px; }
@@ -39,73 +35,51 @@ html, body {
     font-weight: 700; font-size: 11px;
     border: 1px solid rgba(241, 196, 15, 0.4);
     backdrop-filter: blur(10px);
-    pointer-events: none;
-    opacity: 0.7;
-    direction: ltr;
+    pointer-events: none; opacity: 0.7; direction: ltr;
 }
 
 .slide {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh;
+    position: fixed; inset: 0;
+    width: 100vw; height: 100vh; height: 100dvh;
     padding: 20px 30px 30px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow-y: auto; overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.98);
+    display: flex; flex-direction: column; justify-content: center;
+    opacity: 0; visibility: hidden; transform: scale(0.98);
     transition: opacity 0.45s ease, transform 0.45s ease, visibility 0.45s ease;
-    pointer-events: none;
-    z-index: 1;
+    pointer-events: none; z-index: 1;
 }
 .slide.active {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-    pointer-events: auto;
-    z-index: 2;
+    opacity: 1; visibility: visible; transform: scale(1);
+    pointer-events: auto; z-index: 2;
 }
 
 .hero-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 30px;
-    align-items: center;
-    max-width: 1600px;
-    margin: 0 auto;
-    width: 100%;
+    display: grid; grid-template-columns: 1fr 1.1fr;
+    gap: 30px; align-items: center;
+    max-width: 1600px; margin: 0 auto; width: 100%;
 }
 .hero-text-side { display: flex; flex-direction: column; gap: 15px; }
 .hero-brand-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
 
 .pulse-logo {
-    width: clamp(50px, 6vw, 70px);
-    height: clamp(50px, 6vw, 70px);
+    width: clamp(50px, 6vw, 70px); height: clamp(50px, 6vw, 70px);
     background: linear-gradient(135deg, #3498db, #2980b9);
     border-radius: 16px;
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 15px 40px rgba(52, 152, 219, 0.5);
     position: relative;
-    font-size: clamp(28px, 3.5vw, 40px);
-    flex-shrink: 0;
+    font-size: clamp(28px, 3.5vw, 40px); flex-shrink: 0;
 }
 .pulse-logo::after {
-    content: '';
-    position: absolute; inset: -4px;
+    content: ''; position: absolute; inset: -4px;
     border-radius: 20px;
     background: linear-gradient(135deg, #3498db, transparent, #f1c40f);
     z-index: -1; opacity: 0.5;
     animation: logoGlowRotate 6s linear infinite;
 }
 @keyframes logoGlowRotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from { transform: rotate(0deg); } to { transform: rotate(360deg); }
 }
 
 .hero-brand-name {
@@ -125,16 +99,14 @@ html, body {
 .hero-features-row {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 10px; padding-top: 18px;
-    border-top: 2px solid rgba(241, 196, 15, 0.2);
-    margin-top: 10px;
+    border-top: 2px solid rgba(241, 196, 15, 0.2); margin-top: 10px;
 }
 .hero-feature-item {
     display: flex; flex-direction: column;
     align-items: center; gap: 8px; text-align: center;
 }
 .hero-feature-icon {
-    width: clamp(40px, 4.5vw, 55px);
-    height: clamp(40px, 4.5vw, 55px);
+    width: clamp(40px, 4.5vw, 55px); height: clamp(40px, 4.5vw, 55px);
     border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
     font-size: clamp(20px, 2.2vw, 28px);
@@ -146,17 +118,13 @@ html, body {
 .hero-feature-item:nth-child(2) .hero-feature-icon { border-color: #2ecc71; background: rgba(46, 204, 113, 0.15); }
 .hero-feature-item:nth-child(3) .hero-feature-icon { border-color: #9b59b6; background: rgba(155, 89, 182, 0.15); }
 .hero-feature-item:nth-child(4) .hero-feature-icon { border-color: #e74c3c; background: rgba(231, 76, 60, 0.15); }
-
 .hero-feature-label {
     font-size: clamp(10px, 1vw, 13px);
     color: #c8c8d0; font-weight: 700; line-height: 1.4;
 }
-.hero-devices-side {
-    display: flex; justify-content: center; align-items: center; width: 100%;
-}
+.hero-devices-side { display: flex; justify-content: center; align-items: center; width: 100%; }
 .devices-container {
-    position: relative; width: 100%;
-    max-width: 650px;
+    position: relative; width: 100%; max-width: 650px;
     display: flex; align-items: center; justify-content: center;
 }
 .img-container {
@@ -201,8 +169,7 @@ html, body {
 .problem-desc { font-size: clamp(10px, 1vw, 12px); color: #95a5a6; line-height: 1.6; }
 
 .solution-flow {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
     gap: 8px; align-items: center;
     max-width: 1600px; margin: 0 auto; width: 100%;
 }
@@ -252,6 +219,25 @@ html, body {
 .feature-title { font-size: clamp(12px, 1.1vw, 15px); font-weight: 900; color: #f1c40f; margin-bottom: 4px; }
 .feature-card.star .feature-title { font-size: clamp(13px, 1.2vw, 16px); }
 .feature-desc { font-size: clamp(9px, 0.9vw, 11px); color: #95a5a6; line-height: 1.5; }
+
+/* اسلاید اینفوگرافیک */
+.infographic-layout {
+    display: flex; align-items: center; justify-content: center;
+    max-width: 1700px; margin: 0 auto; width: 100%; height: 100%;
+    flex: 1;
+}
+.infographic-img {
+    max-width: 100%; max-height: 100%;
+    width: auto; height: auto;
+    border-radius: 18px;
+    border: 3px solid #f1c40f;
+    box-shadow: 0 20px 60px rgba(241,196,15,0.35), 0 0 100px rgba(241,196,15,0.15);
+    background: #1a1a2e;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
 
 .market-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
@@ -309,8 +295,7 @@ html, body {
     border: 2px solid #f1c40f;
 }
 .why-icon {
-    width: clamp(50px, 6vw, 80px);
-    height: clamp(50px, 6vw, 80px);
+    width: clamp(50px, 6vw, 80px); height: clamp(50px, 6vw, 80px);
     border-radius: 20px;
     background: linear-gradient(135deg, #f1c40f, #d4ac0d);
     display: flex; align-items: center; justify-content: center;
@@ -336,8 +321,7 @@ html, body {
 .team-desc { font-size: clamp(10px, 1vw, 13px); color: #95a5a6; line-height: 1.7; }
 
 .roadmap-timeline {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
     gap: 6px; align-items: stretch;
     max-width: 1600px; margin: 0 auto; width: 100%;
 }
@@ -401,8 +385,7 @@ html, body {
     text-decoration: none; cursor: pointer;
 }
 .contact-item .c-ico {
-    width: clamp(36px, 4vw, 48px);
-    height: clamp(36px, 4vw, 48px);
+    width: clamp(36px, 4vw, 48px); height: clamp(36px, 4vw, 48px);
     border-radius: 12px;
     background: rgba(241,196,15,0.15);
     border: 2px solid #f1c40f;
@@ -415,12 +398,9 @@ html, body {
 .contact-item .c-txt span { font-size: clamp(12px, 1.2vw, 14px); color: #f1c40f; direction: ltr; font-weight: 700; }
 
 .progress-bar {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: rgba(255,255,255,0.05);
-    z-index: 9999;
-    pointer-events: none;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 3px; background: rgba(255,255,255,0.05);
+    z-index: 9999; pointer-events: none;
 }
 .progress-fill {
     height: 100%; width: 10%;
@@ -433,7 +413,6 @@ html, body {
 @media (max-width: 1100px) {
     .slide { padding: 20px 24px 30px; }
     .hero-layout { grid-template-columns: 1fr; gap: 20px; }
-    .hero-devices-side { max-width: 100%; }
     .problem-grid { grid-template-columns: repeat(2, 1fr); }
     .solution-flow { grid-template-columns: 1fr; gap: 14px; }
     .flow-arrow { transform: rotate(-90deg); }
@@ -467,6 +446,7 @@ html, body {
     .contact-grid { grid-template-columns: 1fr; gap: 10px; }
     .contact-item { padding: 14px; }
     .page-counter { font-size: 10px; padding: 4px 10px; }
+    .infographic-img { border-width: 2px; }
 }
 
 @media (max-width: 480px) {
@@ -487,9 +467,10 @@ html, body {
 <div class="bg-glow bg-blue"></div>
 
 <div class="page-counter">
-    <span id="currentPage">1</span> / <span id="totalPages">10</span>
+    <span id="currentPage">1</span> / <span id="totalPages">12</span>
 </div>
 
+<!-- ۱ — کاور -->
 <section class="slide active">
     <div class="hero-layout">
         <div class="hero-text-side">
@@ -516,6 +497,7 @@ html, body {
     </div>
 </section>
 
+<!-- ۲ — مشکل -->
 <section class="slide">
     <h2 class="slide-title">🚨 مشکلات پیش از استفاده از سازه</h2>
     <div class="problem-grid">
@@ -554,6 +536,7 @@ html, body {
     </div>
 </section>
 
+<!-- ۳ — راهکار -->
 <section class="slide">
     <h2 class="slide-title">✨ راه‌حل‌های هوشمند ما</h2>
     <div class="solution-flow">
@@ -572,6 +555,7 @@ html, body {
     </div>
 </section>
 
+<!-- ۴ — مشخصات فنی -->
 <section class="slide">
     <h2 class="slide-title">⚙️ مشخصات فنی سازه</h2>
     <div class="features-grid">
@@ -589,6 +573,23 @@ html, body {
     </div>
 </section>
 
+<!-- ۵ — اینفوگرافیک ۱ (جدید) -->
+<section class="slide">
+    <h2 class="slide-title">📊 نمای کلی سیستم هوشمند — بخش اول</h2>
+    <div class="infographic-layout">
+        <img class="infographic-img" src="info-1.jpg" alt="اینفوگرافیک سیستم هوشمند دامپ‌تراک" draggable="false">
+    </div>
+</section>
+
+<!-- ۶ — اینفوگرافیک ۲ (جدید) -->
+<section class="slide">
+    <h2 class="slide-title">📊 نمای کلی سیستم هوشمند — بخش دوم</h2>
+    <div class="infographic-layout">
+        <img class="infographic-img" src="info-2.jpg" alt="اینفوگرافیک سیستم هوشمند دامپ‌تراک" draggable="false">
+    </div>
+</section>
+
+<!-- ۷ — بازار هدف -->
 <section class="slide">
     <h2 class="slide-title">🎯 بازار هدف ما</h2>
     <div class="market-grid">
@@ -615,6 +616,7 @@ html, body {
     </div>
 </section>
 
+<!-- ۸ — رقبا -->
 <section class="slide">
     <h2 class="slide-title">🏆 رقبای مستقیم و غیرمستقیم</h2>
     <div class="compare-grid">
@@ -651,6 +653,7 @@ html, body {
     </div>
 </section>
 
+<!-- ۹ — مزیت‌ها -->
 <section class="slide">
     <h2 class="slide-title">💎 مزیت‌های رقابتی ما</h2>
     <div class="why-grid">
@@ -673,12 +676,13 @@ html, body {
     </div>
 </section>
 
+<!-- ۱۰ — تیم (با نام اصلاح‌شده) -->
 <section class="slide">
     <h2 class="slide-title">👥 اعضای تیم</h2>
     <div class="team-grid">
         <div class="team-card">
             <div class="team-avatar">👨‍🔧</div>
-            <div class="team-name">محمدصالح مکبادی</div>
+            <div class="team-name">محمدصالح مکی آبادی</div>
             <div class="team-role">مکانیک و ساخت</div>
             <div class="team-desc">طراحی و ساخت سازه، مکانیزم حرکت و سیستم انتقال قدرت</div>
         </div>
@@ -691,6 +695,7 @@ html, body {
     </div>
 </section>
 
+<!-- ۱۱ — نقشه راه -->
 <section class="slide">
     <h2 class="slide-title">🚀 نقشه راه و اهداف بعدی</h2>
     <div class="roadmap-timeline">
@@ -728,6 +733,7 @@ html, body {
     </div>
 </section>
 
+<!-- ۱۲ — تماس -->
 <section class="slide">
     <div class="contact-layout">
         <div class="contact-title">📞 با ما در ارتباط باشید</div>
