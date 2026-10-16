@@ -154,6 +154,14 @@ html, body {
     border-radius: 3px;
 }
 
+/* عنوان کوچک برای اسلایدهای اینفوگرافیک */
+.slide-title.small {
+    font-size: clamp(16px, 2vw, 24px);
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+}
+.slide-title.small::after { width: 60px; height: 3px; }
+
 .problem-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 16px; max-width: 1500px; margin: 0 auto; width: 100%;
@@ -220,24 +228,137 @@ html, body {
 .feature-card.star .feature-title { font-size: clamp(13px, 1.2vw, 16px); }
 .feature-desc { font-size: clamp(9px, 0.9vw, 11px); color: #95a5a6; line-height: 1.5; }
 
-/* اسلاید اینفوگرافیک */
+/* اسلاید اینفوگرافیک — بهبود یافته */
 .infographic-layout {
     display: flex; align-items: center; justify-content: center;
-    max-width: 1700px; margin: 0 auto; width: 100%; height: 100%;
+    width: 100%;
     flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    cursor: zoom-in;
+    position: relative;
 }
 .infographic-img {
-    max-width: 100%; max-height: 100%;
-    width: auto; height: auto;
-    border-radius: 18px;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 14px;
     border: 3px solid #f1c40f;
     box-shadow: 0 20px 60px rgba(241,196,15,0.35), 0 0 100px rgba(241,196,15,0.15);
     background: #1a1a2e;
     object-fit: contain;
     display: block;
-    pointer-events: none;
+    pointer-events: auto;
     user-select: none;
+    transition: transform 0.3s ease;
 }
+.infographic-layout:hover .infographic-img {
+    transform: scale(1.01);
+}
+.infographic-hint {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10,14,20,0.85);
+    color: #f1c40f;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid rgba(241,196,15,0.4);
+    backdrop-filter: blur(10px);
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+/* ── لایت‌باکس زوم ── */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: none;
+}
+.lightbox.active {
+    display: flex;
+}
+.lightbox.dragging {
+    cursor: grabbing;
+}
+.lightbox img {
+    max-width: none;
+    max-height: none;
+    user-select: none;
+    pointer-events: none;
+    transition: transform 0.15s ease-out;
+    transform-origin: center center;
+}
+.lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    background: rgba(241,196,15,0.9);
+    color: #0a0a14;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: 900;
+    cursor: pointer;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 30px rgba(241,196,15,0.5);
+    transition: 0.2s;
+}
+.lightbox-close:hover { background: #f1c40f; transform: scale(1.1); }
+.lightbox-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10,14,20,0.9);
+    color: #f1c40f;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 100px;
+    border: 1px solid rgba(241,196,15,0.4);
+    z-index: 100000;
+    white-space: nowrap;
+}
+.lightbox-zoom-controls {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 100000;
+}
+.lightbox-zoom-controls button {
+    width: 44px;
+    height: 44px;
+    background: rgba(241,196,15,0.9);
+    color: #0a0a14;
+    border: none;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(241,196,15,0.4);
+    transition: 0.2s;
+}
+.lightbox-zoom-controls button:hover { background: #f1c40f; transform: scale(1.08); }
 
 .market-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
@@ -252,7 +373,6 @@ html, body {
 .market-title { font-size: clamp(14px, 1.5vw, 20px); color: #3498db; font-weight: 900; margin-bottom: 8px; }
 .market-desc { font-size: clamp(10px, 1vw, 13px); color: #c8c8d0; line-height: 1.7; }
 
-/* جدول رقبا — حالا دو ستونه */
 .compare-grid {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 20px; max-width: 1200px; margin: 0 auto; width: 100%;
@@ -273,8 +393,6 @@ html, body {
     background: linear-gradient(135deg, #f1c40f, #d4ac0d);
     color: #0a0a14; font-size: clamp(15px, 1.7vw, 22px);
 }
-
-/* چیپ‌های برند */
 .compare-brands {
     display: flex;
     flex-wrap: wrap;
@@ -300,7 +418,6 @@ html, body {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(241,196,15,0.4);
 }
-
 .compare-list { padding: 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .compare-row {
     display: flex; justify-content: space-between;
@@ -477,6 +594,7 @@ html, body {
     .contact-item { padding: 14px; }
     .page-counter { font-size: 10px; padding: 4px 10px; }
     .infographic-img { border-width: 2px; }
+    .infographic-hint { font-size: 10px; padding: 4px 10px; }
 }
 
 @media (max-width: 480px) {
@@ -500,35 +618,8 @@ html, body {
     <span id="currentPage">1</span> / <span id="totalPages">12</span>
 </div>
 
-<!-- ۱ — کاور -->
+<!-- ═══════════ ۱ — مشکل ═══════════ -->
 <section class="slide active">
-    <div class="hero-layout">
-        <div class="hero-text-side">
-            <div class="hero-brand-row">
-                <div class="pulse-logo">🚜</div>
-                <h1 class="hero-brand-name">دامپ‌تراک هوشمند</h1>
-            </div>
-            <p class="hero-main-tagline">آینده‌ی حمل و تخلیه در معدن</p>
-            <p class="hero-sub-tagline">سامانه‌ای مبتنی بر سنسورها و بردهای کنترلی برای هوشمندسازی عملیات معدنی</p>
-            <div class="hero-features-row">
-                <div class="hero-feature-item"><div class="hero-feature-icon">🧠</div><div class="hero-feature-label">کاهش خطای انسانی</div></div>
-                <div class="hero-feature-item"><div class="hero-feature-icon">🛡️</div><div class="hero-feature-label">افزایش ایمنی</div></div>
-                <div class="hero-feature-item"><div class="hero-feature-icon">🛤️</div><div class="hero-feature-label">کنترل خودکار مسیر</div></div>
-                <div class="hero-feature-item"><div class="hero-feature-icon">📦</div><div class="hero-feature-label">تخلیه برنامه‌ریزی‌شده</div></div>
-            </div>
-        </div>
-        <div class="hero-devices-side">
-            <div class="devices-container">
-                <div class="img-container" style="height: clamp(200px, 40vh, 400px);">
-                    <img src="truck-road.jpg" alt="دامپ‌تراک‌ها در مسیر معدن" draggable="false">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ۲ — مشکل -->
-<section class="slide">
     <h2 class="slide-title">🚨 مشکلات پیش از استفاده از سازه</h2>
     <div class="problem-grid">
         <div class="problem-card">
@@ -566,7 +657,7 @@ html, body {
     </div>
 </section>
 
-<!-- ۳ — راهکار -->
+<!-- ═══════════ ۲ — راهکار ═══════════ -->
 <section class="slide">
     <h2 class="slide-title">✨ راه‌حل‌های هوشمند ما</h2>
     <div class="solution-flow">
@@ -585,7 +676,34 @@ html, body {
     </div>
 </section>
 
-<!-- ۴ — مشخصات فنی -->
+<!-- ═══════════ ۳ — کاور ═══════════ -->
+<section class="slide">
+    <div class="hero-layout">
+        <div class="hero-text-side">
+            <div class="hero-brand-row">
+                <div class="pulse-logo">🚜</div>
+                <h1 class="hero-brand-name">دامپ‌تراک هوشمند</h1>
+            </div>
+            <p class="hero-main-tagline">آینده‌ی حمل و تخلیه در معدن</p>
+            <p class="hero-sub-tagline">سامانه‌ای مبتنی بر سنسورها و بردهای کنترلی برای هوشمندسازی عملیات معدنی</p>
+            <div class="hero-features-row">
+                <div class="hero-feature-item"><div class="hero-feature-icon">🧠</div><div class="hero-feature-label">کاهش خطای انسانی</div></div>
+                <div class="hero-feature-item"><div class="hero-feature-icon">🛡️</div><div class="hero-feature-label">افزایش ایمنی</div></div>
+                <div class="hero-feature-item"><div class="hero-feature-icon">🛤️</div><div class="hero-feature-label">کنترل خودکار مسیر</div></div>
+                <div class="hero-feature-item"><div class="hero-feature-icon">📦</div><div class="hero-feature-label">تخلیه برنامه‌ریزی‌شده</div></div>
+            </div>
+        </div>
+        <div class="hero-devices-side">
+            <div class="devices-container">
+                <div class="img-container" style="height: clamp(200px, 40vh, 400px);">
+                    <img src="truck-road.jpg" alt="دامپ‌تراک‌ها در مسیر معدن" draggable="false">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ ۴ — مشخصات فنی ═══════════ -->
 <section class="slide">
     <h2 class="slide-title">⚙️ مشخصات فنی سازه</h2>
     <div class="features-grid">
@@ -603,23 +721,25 @@ html, body {
     </div>
 </section>
 
-<!-- ۵ — اینفوگرافیک ۱ -->
+<!-- ═══════════ ۵ — اینفوگرافیک ۱ ═══════════ -->
 <section class="slide">
-    <h2 class="slide-title">📊 نمای کلی سیستم هوشمند — بخش اول</h2>
-    <div class="infographic-layout">
+    <h2 class="slide-title small">📊 نمای کلی سیستم هوشمند — بخش اول</h2>
+    <div class="infographic-layout" onclick="openLightbox('info-1.jpg')">
         <img class="infographic-img" src="info-1.jpg" alt="اینفوگرافیک سیستم هوشمند دامپ‌تراک" draggable="false">
+        <div class="infographic-hint">🔍 برای بزرگ‌نمایی کلیک کنید</div>
     </div>
 </section>
 
-<!-- ۶ — اینفوگرافیک ۲ -->
+<!-- ═══════════ ۶ — اینفوگرافیک ۲ ═══════════ -->
 <section class="slide">
-    <h2 class="slide-title">📊 نمای کلی سیستم هوشمند — بخش دوم</h2>
-    <div class="infographic-layout">
+    <h2 class="slide-title small">📊 نمای کلی سیستم هوشمند — بخش دوم</h2>
+    <div class="infographic-layout" onclick="openLightbox('info-2.jpg')">
         <img class="infographic-img" src="info-2.jpg" alt="اینفوگرافیک سیستم هوشمند دامپ‌تراک" draggable="false">
+        <div class="infographic-hint">🔍 برای بزرگ‌نمایی کلیک کنید</div>
     </div>
 </section>
 
-<!-- ۷ — بازار هدف -->
+<!-- ═══════════ ۷ — بازار هدف ═══════════ -->
 <section class="slide">
     <h2 class="slide-title">🎯 بازار هدف ما</h2>
     <div class="market-grid">
@@ -646,7 +766,7 @@ html, body {
     </div>
 </section>
 
-<!-- ۸ — رقبا (دو ستونه) -->
+<!-- ═══════════ ۸ — رقبا ═══════════ -->
 <section class="slide">
     <h2 class="slide-title">🏆 رقبای ما</h2>
     <div class="compare-grid">
@@ -679,7 +799,7 @@ html, body {
     </div>
 </section>
 
-<!-- ۹ — مزیت‌ها -->
+<!-- ═══════════ ۹ — مزیت‌ها ═══════════ -->
 <section class="slide">
     <h2 class="slide-title">💎 مزیت‌های رقابتی ما</h2>
     <div class="why-grid">
@@ -702,7 +822,7 @@ html, body {
     </div>
 </section>
 
-<!-- ۱۰ — تیم -->
+<!-- ═══════════ ۱۰ — تیم ═══════════ -->
 <section class="slide">
     <h2 class="slide-title">👥 اعضای تیم</h2>
     <div class="team-grid">
@@ -721,7 +841,7 @@ html, body {
     </div>
 </section>
 
-<!-- ۱۱ — نقشه راه -->
+<!-- ═══════════ ۱۱ — نقشه راه ═══════════ -->
 <section class="slide">
     <h2 class="slide-title">🚀 نقشه راه و اهداف بعدی</h2>
     <div class="roadmap-timeline">
@@ -759,7 +879,7 @@ html, body {
     </div>
 </section>
 
-<!-- ۱۲ — تماس -->
+<!-- ═══════════ ۱۲ — تماس ═══════════ -->
 <section class="slide">
     <div class="contact-layout">
         <div class="contact-title">📞 با ما در ارتباط باشید</div>
@@ -783,9 +903,25 @@ html, body {
 
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
+<!-- ═══════════ لایت‌باکس زوم تصاویر ═══════════ -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="نمای بزرگ" draggable="false">
+    <div class="lightbox-zoom-controls">
+        <button onclick="zoomOut()">−</button>
+        <button onclick="resetZoom()">⟲</button>
+        <button onclick="zoomIn()">+</button>
+    </div>
+    <div class="lightbox-hint">🖱 درگ کنید یا از دکمه‌های + و − استفاده کنید</div>
+</div>
+
 <script>
 (function() {
     'use strict';
+
+    // ══════════════════════════════════
+    // ناوبری اسلایدها
+    // ══════════════════════════════════
     var slides = document.querySelectorAll('.slide');
     var total = slides.length;
     var cur = 0;
@@ -810,6 +946,10 @@ html, body {
     function prevSlide() { goToSlide(cur - 1); }
 
     document.addEventListener('keydown', function(e) {
+        if (lightboxOpen) {
+            if (e.key === 'Escape') closeLightbox();
+            return;
+        }
         if (e.key === 'ArrowLeft' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); nextSlide(); }
         else if (e.key === 'ArrowRight' || e.key === 'PageUp') { e.preventDefault(); prevSlide(); }
         else if (e.key === 'Home') { e.preventDefault(); goToSlide(0); }
@@ -818,12 +958,14 @@ html, body {
 
     var tsX = 0, tsY = 0, tsT = 0;
     document.addEventListener('touchstart', function(e) {
+        if (lightboxOpen) return;
         tsX = e.changedTouches[0].screenX;
         tsY = e.changedTouches[0].screenY;
         tsT = Date.now();
     }, { passive: true });
 
     document.addEventListener('touchend', function(e) {
+        if (lightboxOpen) return;
         var teX = e.changedTouches[0].screenX;
         var teY = e.changedTouches[0].screenY;
         var dX = teX - tsX;
@@ -837,10 +979,12 @@ html, body {
 
     var msX = 0, msY = 0, mDown = false;
     document.addEventListener('mousedown', function(e) {
+        if (lightboxOpen) return;
         if (e.target.closest('a') || e.target.closest('button')) return;
         msX = e.clientX; msY = e.clientY; mDown = true;
     });
     document.addEventListener('mouseup', function(e) {
+        if (lightboxOpen) return;
         if (!mDown) return;
         mDown = false;
         var dX = e.clientX - msX, dY = e.clientY - msY;
@@ -854,6 +998,167 @@ html, body {
     });
     document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
 
+    // ══════════════════════════════════
+    // لایت‌باکس زوم تصاویر
+    // ══════════════════════════════════
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightboxImg');
+    var lightboxOpen = false;
+    var scale = 1;
+    var offsetX = 0, offsetY = 0;
+    var lbStartX = 0, lbStartY = 0, lbDragging = false;
+
+    window.openLightbox = function(src) {
+        lightboxImg.src = src;
+        scale = 1;
+        offsetX = 0;
+        offsetY = 0;
+        updateLightboxTransform();
+        lightbox.classList.add('active');
+        lightboxOpen = true;
+
+        // تنظیم اندازه اولیه تصویر
+        lightboxImg.onload = function() {
+            fitImageToScreen();
+        };
+        if (lightboxImg.complete) fitImageToScreen();
+    };
+
+    window.closeLightbox = function() {
+        lightbox.classList.remove('active');
+        lightboxOpen = false;
+        scale = 1;
+        offsetX = 0;
+        offsetY = 0;
+        updateLightboxTransform();
+    };
+
+    function fitImageToScreen() {
+        var vw = window.innerWidth;
+        var vh = window.innerHeight;
+        var iw = lightboxImg.naturalWidth;
+        var ih = lightboxImg.naturalHeight;
+        // تصویر به صورت پیش‌فرض طوری تنظیم بشه که کامل در صفحه دیده بشه
+        var ratio = Math.min(vw / iw, vh / ih);
+        lightboxImg.style.width = (iw * ratio) + 'px';
+        lightboxImg.style.height = (ih * ratio) + 'px';
+        scale = 1;
+        offsetX = 0;
+        offsetY = 0;
+        updateLightboxTransform();
+    }
+
+    window.zoomIn = function() {
+        scale = Math.min(scale * 1.4, 8);
+        updateLightboxTransform();
+    };
+    window.zoomOut = function() {
+        scale = Math.max(scale / 1.4, 0.5);
+        updateLightboxTransform();
+    };
+    window.resetZoom = function() {
+        fitImageToScreen();
+    };
+
+    function updateLightboxTransform() {
+        lightboxImg.style.transform = 'translate(' + offsetX + 'px, ' + offsetY + 'px) scale(' + scale + ')';
+    }
+
+    // درگ کردن تصویر داخل لایت‌باکس (موس)
+    lightbox.addEventListener('mousedown', function(e) {
+        if (e.target.classList.contains('lightbox-close')) return;
+        if (e.target.closest('.lightbox-zoom-controls')) return;
+        lbDragging = true;
+        lbStartX = e.clientX - offsetX;
+        lbStartY = e.clientY - offsetY;
+        lightbox.classList.add('dragging');
+    });
+
+    document.addEventListener('mousemove', function(e) {
+        if (!lbDragging) return;
+        offsetX = e.clientX - lbStartX;
+        offsetY = e.clientY - lbStartY;
+        updateLightboxTransform();
+    });
+
+    document.addEventListener('mouseup', function() {
+        if (!lbDragging) return;
+        lbDragging = false;
+        lightbox.classList.remove('dragging');
+    });
+
+    // درگ لمسی
+    var lbTouches = {};
+    lightbox.addEventListener('touchstart', function(e) {
+        if (e.target.classList.contains('lightbox-close')) return;
+        if (e.target.closest('.lightbox-zoom-controls')) return;
+
+        if (e.touches.length === 1) {
+            lbDragging = true;
+            lbStartX = e.touches[0].clientX - offsetX;
+            lbStartY = e.touches[0].clientY - offsetY;
+        } else if (e.touches.length === 2) {
+            // پینچ زوم
+            lbDragging = false;
+            lbTouches.startDist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            lbTouches.startScale = scale;
+        }
+    }, { passive: true });
+
+    lightbox.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 1 && lbDragging) {
+            e.preventDefault();
+            offsetX = e.touches[0].clientX - lbStartX;
+            offsetY = e.touches[0].clientY - lbStartY;
+            updateLightboxTransform();
+        } else if (e.touches.length === 2 && lbTouches.startDist) {
+            e.preventDefault();
+            var dist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            scale = Math.min(Math.max(lbTouches.startScale * (dist / lbTouches.startDist), 0.5), 8);
+            updateLightboxTransform();
+        }
+    }, { passive: false });
+
+    lightbox.addEventListener('touchend', function(e) {
+        if (e.touches.length === 0) {
+            lbDragging = false;
+            lbTouches.startDist = 0;
+        }
+    });
+
+    // دو بار کلیک برای زوم
+    lightbox.addEventListener('dblclick', function(e) {
+        if (e.target === lightboxImg) {
+            scale = scale > 1.5 ? 1 : 3;
+            offsetX = 0;
+            offsetY = 0;
+            updateLightboxTransform();
+        }
+    });
+
+    // کلیک روی پس‌زمینه برای بستن
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    // اسکرول موس برای زوم
+    lightbox.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        if (e.deltaY < 0) {
+            scale = Math.min(scale * 1.15, 8);
+        } else {
+            scale = Math.max(scale / 1.15, 0.5);
+        }
+        updateLightboxTransform();
+    }, { passive: false });
+
+    // مقداردهی اولیه
     progressFill.style.width = (1 / total * 100) + '%';
 })();
 </script>
