@@ -252,9 +252,10 @@ html, body {
 .market-title { font-size: clamp(14px, 1.5vw, 20px); color: #3498db; font-weight: 900; margin-bottom: 8px; }
 .market-desc { font-size: clamp(10px, 1vw, 13px); color: #c8c8d0; line-height: 1.7; }
 
+/* جدول رقبا — حالا دو ستونه */
 .compare-grid {
-    display: grid; grid-template-columns: 1.2fr 1fr 1fr;
-    gap: 14px; max-width: 1500px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px; max-width: 1200px; margin: 0 auto; width: 100%;
 }
 .compare-col {
     background: #1a1a2e; border-radius: 18px;
@@ -263,25 +264,53 @@ html, body {
 }
 .compare-col.mine { border-color: #f1c40f; box-shadow: 0 0 60px rgba(241,196,15,0.25); }
 .compare-head {
-    padding: 14px; text-align: center;
-    font-size: clamp(13px, 1.4vw, 18px); font-weight: 900;
+    padding: 18px; text-align: center;
+    font-size: clamp(14px, 1.6vw, 20px); font-weight: 900;
     background: #2d1f4d; color: #f1c40f;
     border-bottom: 2px solid #2c3e50;
 }
 .compare-col.mine .compare-head {
     background: linear-gradient(135deg, #f1c40f, #d4ac0d);
-    color: #0a0a14; font-size: clamp(14px, 1.5vw, 20px);
+    color: #0a0a14; font-size: clamp(15px, 1.7vw, 22px);
 }
-.compare-list { padding: 10px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
+
+/* چیپ‌های برند */
+.compare-brands {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 14px 12px 6px 12px;
+    justify-content: center;
+}
+.brand-chip {
+    background: linear-gradient(135deg, rgba(241,196,15,0.15), rgba(241,196,15,0.05));
+    border: 1.5px solid rgba(241,196,15,0.5);
+    color: #f1c40f;
+    font-size: clamp(10px, 1vw, 12px);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    direction: ltr;
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    transition: 0.3s;
+}
+.brand-chip:hover {
+    background: rgba(241,196,15,0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(241,196,15,0.4);
+}
+
+.compare-list { padding: 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .compare-row {
     display: flex; justify-content: space-between;
-    align-items: center; padding: 8px 12px;
+    align-items: center; padding: 12px 16px;
     background: rgba(15,15,26,0.5);
-    border-radius: 8px; font-size: clamp(10px, 1vw, 13px);
+    border-radius: 10px; font-size: clamp(12px, 1.2vw, 15px);
 }
 .compare-col.mine .compare-row { background: rgba(241,196,15,0.1); border-right: 3px solid #f1c40f; }
 .compare-name { color: #c8c8d0; font-weight: 600; }
-.compare-mark { font-size: clamp(14px, 1.5vw, 20px); }
+.compare-mark { font-size: clamp(16px, 1.6vw, 22px); }
 
 .why-grid {
     display: grid; grid-template-columns: repeat(2, 1fr);
@@ -420,6 +449,7 @@ html, body {
     .why-grid { grid-template-columns: 1fr 1fr; }
     .roadmap-timeline { grid-template-columns: 1fr 1fr; gap: 14px; }
     .roadmap-line-h { display: none; }
+    .compare-grid { max-width: 100%; }
 }
 
 @media (max-width: 768px) {
@@ -437,7 +467,7 @@ html, body {
     .feature-card { padding: 14px 10px; }
     .market-grid { grid-template-columns: 1fr; gap: 12px; }
     .compare-grid { grid-template-columns: 1fr; gap: 12px; }
-    .compare-row { padding: 8px 10px; }
+    .compare-row { padding: 10px 12px; }
     .why-grid { grid-template-columns: 1fr; gap: 12px; }
     .why-card { padding: 16px; gap: 12px; }
     .team-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -573,7 +603,7 @@ html, body {
     </div>
 </section>
 
-<!-- ۵ — اینفوگرافیک ۱ (جدید) -->
+<!-- ۵ — اینفوگرافیک ۱ -->
 <section class="slide">
     <h2 class="slide-title">📊 نمای کلی سیستم هوشمند — بخش اول</h2>
     <div class="infographic-layout">
@@ -581,7 +611,7 @@ html, body {
     </div>
 </section>
 
-<!-- ۶ — اینفوگرافیک ۲ (جدید) -->
+<!-- ۶ — اینفوگرافیک ۲ -->
 <section class="slide">
     <h2 class="slide-title">📊 نمای کلی سیستم هوشمند — بخش دوم</h2>
     <div class="infographic-layout">
@@ -616,9 +646,9 @@ html, body {
     </div>
 </section>
 
-<!-- ۸ — رقبا -->
+<!-- ۸ — رقبا (دو ستونه) -->
 <section class="slide">
-    <h2 class="slide-title">🏆 رقبای مستقیم و غیرمستقیم</h2>
+    <h2 class="slide-title">🏆 رقبای ما</h2>
     <div class="compare-grid">
         <div class="compare-col mine">
             <div class="compare-head">⭐ دامپ‌تراک هوشمند</div>
@@ -632,22 +662,18 @@ html, body {
         </div>
         <div class="compare-col">
             <div class="compare-head">💼 رقبای خارجی</div>
+            <div class="compare-brands">
+                <span class="brand-chip">CATERPILLAR</span>
+                <span class="brand-chip">BELAZ</span>
+                <span class="brand-chip">VOLVO</span>
+                <span class="brand-chip">KOMATSU</span>
+            </div>
             <div class="compare-list">
                 <div class="compare-row"><span class="compare-name">هزینه واردات</span><span class="compare-mark" style="color:#e74c3c">❌</span></div>
                 <div class="compare-row"><span class="compare-name">سفارشی‌سازی</span><span class="compare-mark" style="color:#e74c3c">❌</span></div>
                 <div class="compare-row"><span class="compare-name">پشتیبانی محلی</span><span class="compare-mark" style="color:#e74c3c">❌</span></div>
                 <div class="compare-row"><span class="compare-name">زمان عرضه</span><span class="compare-mark" style="color:#f39c12">⚠️</span></div>
                 <div class="compare-row"><span class="compare-name">هزینه نگهداری</span><span class="compare-mark" style="color:#f39c12">⚠️</span></div>
-            </div>
-        </div>
-        <div class="compare-col">
-            <div class="compare-head">📝 روش‌های سنتی</div>
-            <div class="compare-list">
-                <div class="compare-row"><span class="compare-name">هزینه واردات</span><span class="compare-mark" style="color:#2ecc71">✅</span></div>
-                <div class="compare-row"><span class="compare-name">سفارشی‌سازی</span><span class="compare-mark" style="color:#e74c3c">❌</span></div>
-                <div class="compare-row"><span class="compare-name">پشتیبانی محلی</span><span class="compare-mark" style="color:#2ecc71">✅</span></div>
-                <div class="compare-row"><span class="compare-name">زمان عرضه</span><span class="compare-mark" style="color:#f39c12">⚠️</span></div>
-                <div class="compare-row"><span class="compare-name">هزینه نگهداری</span><span class="compare-mark" style="color:#e74c3c">❌</span></div>
             </div>
         </div>
     </div>
@@ -676,7 +702,7 @@ html, body {
     </div>
 </section>
 
-<!-- ۱۰ — تیم (با نام اصلاح‌شده) -->
+<!-- ۱۰ — تیم -->
 <section class="slide">
     <h2 class="slide-title">👥 اعضای تیم</h2>
     <div class="team-grid">
